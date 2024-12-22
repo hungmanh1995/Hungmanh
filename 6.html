@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang web đơn giản của tôi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        header, footer { background-color: #f8f8f8; padding: 10px; text-align: center; }
+        main { margin: 20px 0; }
+        img, video { max-width: 100%; height: auto; }
+        .login-form { margin: 20px 0; }
+        .hidden { display: none; }
+    </style>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            if (username === 'manhmongmanh') {
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('welcomeMessage').textContent = 'Xin chào, ' + username + '!';
+
+                // Thay thế hình ảnh bằng video
+                var videoElement = document.createElement('video');
+                videoElement.setAttribute('controls', ''); // Cho phép điều khiển video (play/pause)
+
+                var sourceElement = document.createElement('source');
+                sourceElement.setAttribute('src', 'file:///C:/Users/aoi.master3in1/Desktop/manh/HTML/f.mp4'); // Đường dẫn tới video
+                sourceElement.setAttribute('type', 'video/mp4');
+
+                videoElement.appendChild(sourceElement);
+
+                var mainContent = document.getElementById('mainContent');
+                mainContent.innerHTML = ''; // Xóa nội dung hiện tại
+                mainContent.appendChild(videoElement); // Thêm video
+            } else {
+                alert('Tên đăng nhập không đúng');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Chào mừng đến với trang web của tôi</h1>
+    </header>
+
+    <main>
+        <form id="loginForm" class="login-form" onsubmit="handleLogin(event)">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Đăng nhập</button>
+        </form>
+
+        <p id="welcomeMessage"></p>
+
+        <h2>Download file excel</h2>
+        <p>Bấm vào liên kết dưới đây để tải xuống tệp Excel Macro so sánh BOM:</p>
+	    <a href="file:///C:/Users/aoi.master3in1/Desktop/BOM/So sanh BOM SMPS (file_nhe).xlsm" download> Tải  xuống tệp excel</a>
+
+        <div id="mainContent">
+            <img src="file:///C:/Users/aoi.master3in1/Desktop/manh/HTML/c.jpg" alt="Mô tả hình ảnh ban đầu">
+        </div>
+    </main>
+
+    <footer>
+        <p>Bản quyền © 2025 - Phan Hùng Mạnh</p>
+    </footer>
+
+</body>
+</html>
